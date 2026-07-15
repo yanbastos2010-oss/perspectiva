@@ -1,0 +1,87 @@
+@import "tailwindcss";
+
+@theme {
+  --color-background: #ffffff;
+  --color-foreground: hsl(222.2 84% 4.9%);
+  --color-card: hsl(0 0% 100%);
+  --color-card-foreground: hsl(222.2 84% 4.9%);
+  --color-popover: hsl(0 0% 100%);
+  --color-popover-foreground: hsl(222.2 84% 4.9%);
+  --color-primary: hsl(45 93% 47%);
+  --color-primary-foreground: hsl(45 47% 11%);
+  --color-primary-dark: hsl(45 92% 41%);
+  --color-secondary: hsl(0 0% 100%);
+  --color-secondary-foreground: hsl(45 47% 11%);
+  --color-muted: hsl(0 0% 100%);
+  --color-muted-foreground: hsl(45 16.3% 46.9%);
+  --color-accent: hsl(45 93% 47%);
+  --color-accent-foreground: hsl(45 47% 11%);
+  --color-destructive: hsl(0 84.2% 60.2%);
+  --color-destructive-foreground: hsl(210 40% 98%);
+  --color-success: hsl(142.1 76.2% 36.3%);
+  --color-success-foreground: hsl(355.7 100% 97.3%);
+  --color-border: hsl(45 31.8% 91.4%);
+  --color-cta: hsl(45 93% 47%);
+  --color-cta-foreground: hsl(45 47% 11%);
+  --color-warning: hsl(45 93% 47%);
+  --color-warning-foreground: hsl(45 47% 11%);
+  --color-section-light: #ffffff;
+  --color-section-light-foreground: #0f172a;
+  
+  --font-display: 'Poppins', sans-serif;
+  --radius: 0.75rem;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-20px); }
+}
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.animate-fade-up {
+  animation: fade-up 0.8s ease-out forwards;
+}
+.animate-fade-up-delay-1 {
+  animation: fade-up 0.8s ease-out 0.2s forwards;
+  opacity: 0;
+}
+.animate-fade-up-delay-2 {
+  animation: fade-up 0.8s ease-out 0.4s forwards;
+  opacity: 0;
+}
+
+@keyframes pulse-slow {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.02); }
+}
+.animate-pulse-slow {
+  animation: pulse-slow 3s infinite ease-in-out;
+}
+
+.glass-card-elevated {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.07);
+}
+
+.glass-card {
+  background: rgba(255, 255, 255, 0.4);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+@keyframes border-glow {
+  0%, 100% { border-color: rgba(234, 179, 8, 0.5); box-shadow: 0 0 15px rgba(234, 179, 8, 0.3); }
+  50% { border-color: rgba(234, 179, 8, 1); box-shadow: 0 0 25px rgba(234, 179, 8, 0.6); }
+}
+.animate-border-glow {
+  animation: border-glow 3s infinite alternate;
+}

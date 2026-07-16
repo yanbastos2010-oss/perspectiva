@@ -110,7 +110,10 @@
         color: #ffffff !important;
       }
     </style>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <!-- Carregamento Assíncrono e Otimizado da Fonte Poppins para eliminar Bloqueio de Renderização (PageSpeed 100%) -->
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+    <noscript><link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet"></noscript>
 
     <script>
       window.pixelId = "6a56a01b3426c61380f93c36";
@@ -604,7 +607,7 @@
               </div>
 
               <a href="https://ggcheckout.app/checkout/v5/gj3zd6IrmgZ7kaHZJFTw" class="w-full text-center flex items-center justify-center text-sm md:text-base py-5 md:py-6 rounded-xl font-bold bg-primary text-white hover:bg-primary-dark transition-all animate-pulse-slow shadow-green-lg" id="complete-plan-btn">
-                QUERO O PACOTE COMPLETO 📐
+                QUERO O PACOTE COMPLETO
               </a>
 
               <div class="flex items-center justify-center gap-1.5 mt-2 text-muted-foreground">
@@ -1154,6 +1157,61 @@
               closeUpsellModal();
             }
           });
+        }
+
+        // 8. OTIMIZAÇÃO AVANÇADA: Idle Preloading Engine (Conexão instantânea e imagens pré-carregadas)
+        // Pré-carrega de forma inteligente todas as imagens abaixo da dobra e as páginas de checkout
+        // com as UTMs já incluídas, apenas quando o navegador estiver livre (ocioso), garantindo PageSpeed máximo!
+        const prefetchAssets = () => {
+          const idleCallback = window.requestIdleCallback || ((cb) => setTimeout(cb, 800));
+          idleCallback(() => {
+            // Imagens secundárias e bônus (já pré-carregando em cache)
+            const subImages = [
+              "https://i.ibb.co/27y6z1m0/b11608a1-b531-4f30-8a95-d3a1ce1b9377.png",
+              "https://i.ibb.co/rR4kGtCv/a6b087f9-05d9-4ee3-8abe-872952544eca.png",
+              "https://i.ibb.co/B29yMN5w/f7350f8e-bac3-4213-85d7-3d4b83e2b0d1.png",
+              "https://i.ibb.co/Xx9xgT65/c291c4a7-2c2b-4d0a-897b-448ccb9d7341.png",
+              "https://i.ibb.co/ch2rSZ88/736251572-18113879153299215-26156366951071918-n.jpg",
+              "https://i.ibb.co/TMPFsSqJ/732769511-18113879135299215-2777418711649296510-n.jpg",
+              "https://i.ibb.co/BVWZRcyQ/58c4396a-a066-49c2-91d1-4121b30e8e3c.png"
+            ];
+            subImages.forEach(src => {
+              const img = new Image();
+              img.src = src;
+            });
+
+            // Pré-carrega as conexões de checkout com os parâmetros atuais de UTM de forma transparente
+            try {
+              const checkoutsToPrefetch = [
+                getCheckoutUrlWithParams(basicCheckoutUrl),
+                getCheckoutUrlWithParams(completeCheckoutUrl),
+                getCheckoutUrlWithParams(upsellCheckoutUrl)
+              ];
+              checkoutsToPrefetch.forEach(url => {
+                if (!url) return;
+                // Pré-resolve DNS e estabelece conexão prévia com o gateway
+                const preconnect = document.createElement('link');
+                preconnect.rel = 'preconnect';
+                preconnect.href = 'https://ggcheckout.app';
+                preconnect.crossOrigin = 'anonymous';
+                document.head.appendChild(preconnect);
+
+                // Prefetch da página completa do checkout em cache local
+                const prefetch = document.createElement('link');
+                prefetch.rel = 'prefetch';
+                prefetch.href = url;
+                document.head.appendChild(prefetch);
+              });
+            } catch (err) {
+              console.warn('Erro ao carregar prefetch de checkout:', err);
+            }
+          });
+        };
+
+        if (document.readyState === 'complete') {
+          prefetchAssets();
+        } else {
+          window.addEventListener('load', prefetchAssets);
         }
       }
 

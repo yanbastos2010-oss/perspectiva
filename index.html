@@ -7,17 +7,16 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preconnect" href="https://i.ibb.co" crossorigin>
     <link rel="preconnect" href="https://cdn.utmify.com.br" crossorigin>
+    <link rel="preconnect" href="https://ggcheckout.app" crossorigin>
     
     <link rel="dns-prefetch" href="https://fonts.googleapis.com">
     <link rel="dns-prefetch" href="https://fonts.gstatic.com">
     <link rel="dns-prefetch" href="https://i.ibb.co">
     <link rel="dns-prefetch" href="https://cdn.utmify.com.br">
+    <link rel="dns-prefetch" href="https://ggcheckout.app">
 
-    <!-- Preload das imagens críticas (Destaque do Hero + Bônus) para acelerar a renderização -->
-    <link rel="preload" as="image" href="https://i.ibb.co/KxvSFXLZ/744858258-1580197137104113-9070631030325700206-n.jpg" fetchpriority="high">
-    <link rel="preload" as="image" href="https://i.ibb.co/27y6z1m0/b11608a1-b531-4f30-8a95-d3a1ce1b9377.png" fetchpriority="high">
-    <link rel="preload" as="image" href="https://i.ibb.co/rR4kGtCv/a6b087f9-05d9-4ee3-8abe-872952544eca.png" fetchpriority="high">
-    <link rel="preload" as="image" href="https://i.ibb.co/B29yMN5w/f7350f8e-bac3-4213-85d7-3d4b83e2b0d1.png" fetchpriority="high">
+    <!-- Preload das imagens críticas (Destaque do Hero LCP) para acelerar o carregamento da dobra superior -->
+    <link rel="preload" as="image" href="https://i.ibb.co/WW2Mx01C/perspective-optical-illusion-5-2000x2000.webp" fetchpriority="high">
     
     <title>+200 Moldes de Perspectiva Reversa para Transformar suas Aulas</title>
     <meta name="description" content="Tenha acesso a mais de 200 moldes de perspectiva reversa prontos de alta qualidade para transformar suas aulas.">
@@ -101,72 +100,6 @@
         overflow: hidden;
         transition: max-height 0.2s ease-out;
       }
-
-      /* Carrossel Limpo (somente imagens e setas) */
-      .carousel-container {
-        position: relative;
-        width: 100%;
-        max-width: 520px;
-        margin: 0 auto;
-        overflow: hidden;
-        border: none !important;
-        background: transparent !important;
-        box-shadow: none !important;
-      }
-      
-      .carousel-slides {
-        display: flex;
-        transition: transform 0.3s ease-in-out;
-      }
-      
-      .carousel-slide {
-        min-width: 100%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        background-color: transparent !important;
-      }
-      
-      .carousel-slide img {
-        width: 100%;
-        height: auto;
-        object-fit: contain;
-        max-height: 520px;
-        border-radius: 0 !important;
-      }
-      
-      .carousel-btn {
-        position: absolute;
-        top: 50%;
-        transform: translateY(-50%);
-        background-color: #7c3aed !important;
-        color: #ffffff !important;
-        border: none;
-        width: 3rem;
-        height: 3rem;
-        border-radius: 50%;
-        cursor: pointer;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        z-index: 10;
-        transition: transform 0.2s, background-color 0.2s;
-        box-shadow: 0 4px 10px rgba(124, 58, 237, 0.3) !important;
-      }
-      .carousel-btn svg {
-        width: 24px;
-        height: 24px;
-        filter: none;
-      }
-      
-      .carousel-btn:hover {
-        background-color: #6d28d9 !important;
-        color: #ffffff !important;
-        transform: translateY(-50%) scale(1.1);
-      }
-      
-      .carousel-btn-left { left: 0.5rem; }
-      .carousel-btn-right { right: 0.5rem; }
 
       /* Ícones de check verdes sem borda */
       .check-green-bg {
@@ -252,7 +185,7 @@
 
           <!-- Imagem de Destaque -->
           <div class="mx-auto mt-5 max-w-sm rounded-xl overflow-hidden shadow-lg">
-              <img src="https://i.ibb.co/KxvSFXLZ/744858258-1580197137104113-9070631030325700206-n.jpg" referrerpolicy="no-referrer" fetchpriority="high" loading="eager" decoding="sync" alt="Moldes de perspectiva reversa 3D" class="w-full h-auto block rounded-xl">
+              <img src="https://i.ibb.co/WW2Mx01C/perspective-optical-illusion-5-2000x2000.webp" referrerpolicy="no-referrer" fetchpriority="high" loading="eager" decoding="sync" width="384" height="384" alt="Moldes de perspectiva reversa 3D" class="w-full h-auto block rounded-xl">
           </div>
 
           <!-- Descrição & CTA do topo -->
@@ -365,7 +298,8 @@
                      referrerpolicy="no-referrer"
                      alt="Encantamento com Atividade 3D 1" 
                      class="w-full h-auto block select-none"
-                     loading="lazy">
+                     loading="lazy"
+                     decoding="async">
               </div>
 
               <!-- Slide 2 -->
@@ -374,7 +308,8 @@
                      referrerpolicy="no-referrer"
                      alt="Encantamento com Atividade 3D 2" 
                      class="w-full h-auto block select-none"
-                     loading="lazy">
+                     loading="lazy"
+                     decoding="async">
               </div>
 
               <!-- Slide 3 -->
@@ -383,7 +318,8 @@
                      referrerpolicy="no-referrer"
                      alt="Encantamento com Atividade 3D 3" 
                      class="w-full h-auto block select-none"
-                     loading="lazy">
+                     loading="lazy"
+                     decoding="async">
               </div>
 
             </div>
@@ -424,7 +360,7 @@
               </div>
               <div class="px-4 flex justify-center">
                 <div class="w-[56%] aspect-square bg-gradient-to-br from-primary/10 to-primary/5 border-2 border-primary/20 rounded-xl overflow-hidden flex items-center justify-center">
-                  <img src="https://i.ibb.co/27y6z1m0/b11608a1-b531-4f30-8a95-d3a1ce1b9377.png" referrerpolicy="no-referrer" alt="50 Técnicas de Pintura e Desenho" class="w-full h-full object-cover" border="0" loading="eager" decoding="async">
+                  <img src="https://i.ibb.co/27y6z1m0/b11608a1-b531-4f30-8a95-d3a1ce1b9377.png" referrerpolicy="no-referrer" alt="50 Técnicas de Pintura e Desenho" class="w-full h-full object-cover" border="0" loading="lazy" decoding="async">
                 </div>
               </div>
               <div class="px-4 pt-2">
@@ -446,7 +382,7 @@
               </div>
               <div class="px-4 flex justify-center">
                 <div class="w-[56%] aspect-square bg-gradient-to-br from-primary/10 to-primary/5 border-2 border-primary/20 rounded-xl overflow-hidden flex items-center justify-center">
-                  <img src="https://i.ibb.co/rR4kGtCv/a6b087f9-05d9-4ee3-8abe-872952544eca.png" referrerpolicy="no-referrer" alt="30 Projetos de Arte Prontos" class="w-full h-full object-cover" border="0" loading="eager" decoding="async">
+                  <img src="https://i.ibb.co/rR4kGtCv/a6b087f9-05d9-4ee3-8abe-872952544eca.png" referrerpolicy="no-referrer" alt="30 Projetos de Arte Prontos" class="w-full h-full object-cover" border="0" loading="lazy" decoding="async">
                 </div>
               </div>
               <div class="px-4 pt-2">
@@ -468,7 +404,7 @@
               </div>
               <div class="px-4 flex justify-center">
                 <div class="w-[56%] aspect-square bg-gradient-to-br from-primary/10 to-primary/5 border-2 border-primary/20 rounded-xl overflow-hidden flex items-center justify-center">
-                  <img src="https://i.ibb.co/B29yMN5w/f7350f8e-bac3-4213-85d7-3d4b83e2b0d1.png" referrerpolicy="no-referrer" alt="Apostila de Artes Visuais" class="w-full h-full object-cover" border="0" loading="eager" decoding="async">
+                  <img src="https://i.ibb.co/B29yMN5w/f7350f8e-bac3-4213-85d7-3d4b83e2b0d1.png" referrerpolicy="no-referrer" alt="Apostila de Artes Visuais" class="w-full h-full object-cover" border="0" loading="lazy" decoding="async">
                 </div>
               </div>
               <div class="px-4 pt-2">
@@ -946,11 +882,6 @@
         }
         setInterval(updateTimer, 1000);
         updateTimer();
-
-        // 5. Carrossel de Amostras das Artes - Removido conforme solicitação
-        const slidesContainer = null;
-        const btnPrev = null;
-        const btnNext = null;
 
         // 6. Accordion das Perguntas Frequentes (FAQ)
         const faqItems = document.querySelectorAll('.faq-item');

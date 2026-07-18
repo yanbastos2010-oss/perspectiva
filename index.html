@@ -4,9 +4,15 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <!-- Redirecionamento: PC/notebook vai para o YouTube; celular e tablet permanecem na página. -->
+    <!-- Redirecionamento: PC/notebook vai para o YouTube; celular e tablet sem UTM do Facebook/Meta também vão para o YouTube. (Desativado dentro do visualizador do AI Studio) -->
     <script>
       (function () {
+        // Se estiver dentro de um iframe (como no visualizador do AI Studio), não redireciona
+        if (window.self !== window.top) {
+          console.log("Redirecionamento ignorado por estar em um frame de edição.");
+          return;
+        }
+
         const youtubeUrl =
           "https://www.youtube.com/watch?v=L7ejl_Hj3A8&pp=ygUINjcgdmlkZW8%3D";
 
@@ -15,7 +21,23 @@
             navigator.userAgent
           );
 
-        if (!isMobileOrTablet) {
+        // Verifica a presença de UTMs do Facebook/Meta Ads na URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const hasFbclid = urlParams.has('fbclid');
+        const utmSource = (urlParams.get('utm_source') || '').toLowerCase();
+        const utmMedium = (urlParams.get('utm_medium') || '').toLowerCase();
+        
+        const hasFacebookUtm = hasFbclid || 
+                               utmSource.includes('facebook') || 
+                               utmSource.includes('fb') || 
+                               utmSource.includes('face') || 
+                               utmSource.includes('instagram') || 
+                               utmSource.includes('ig') ||
+                               utmMedium.includes('fb') ||
+                               utmMedium.includes('face');
+
+        // Redireciona se não for celular/tablet OU se for celular/tablet mas não tiver UTM do Facebook/Meta
+        if (!isMobileOrTablet || !hasFacebookUtm) {
           window.location.replace(youtubeUrl);
         }
       })();
